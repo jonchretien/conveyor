@@ -1,0 +1,8 @@
+{
+  "name": "conveyor",
+  "version": "1.0.0",
+  "description": "Conveyor animates HTML anchor navigation without any library dependencies",
+  "main": "conveyor.js",
+  "dependencies": {
+  }
+}
