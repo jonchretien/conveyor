@@ -10,7 +10,10 @@ Conveyor looks for links with a data attribute of _data-fx_ and a value of _conv
 <a href="#home" data-fx="conveyor" class="nav-home">Home</a>
 ```
 
-Each link must have a matching id target. For example, the above link must correspond to something in the dom like `` <div id="home"></div>``.
+Each link must have a matching id target. For example, the above link must correspond to something in the dom like:
+``` html
+<div id="home"></div>
+```
 
 Once the links have the proper data attribute create a new instance of Conveyor and add custom options (see below):
 
