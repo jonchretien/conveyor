@@ -18,7 +18,7 @@
    */
   function Conveyor(options) {
     // stop if browser doesn't meet necessary requirements
-    if ( !document.querySelectorAll ) {
+    if ( !document.querySelectorAll && !document.documentElement.classList ) {
       return;
     }
 
