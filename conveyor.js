@@ -286,7 +286,8 @@
   Conveyor.prototype.moveConveyor = function() {
     var yPos;
 
-    // calculate interpolation factor by comparing the start time to the current time to see how far along the animation should be
+    // calculate interpolation factor by comparing the start time
+    // to the current time to see how far along the animation should be
     this.factor = ( Date.now() - this.startTime ) / this.duration;
 
     // stop animation & set factor to 1.0 if >= 1
