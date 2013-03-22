@@ -1,5 +1,5 @@
 /**
- * Conveyor v1.0.0
+ * Conveyor v1.0.1
  * Conveyor animates HTML anchor navigation without any library dependencies.
  *
  * @license Released under the MIT license.
