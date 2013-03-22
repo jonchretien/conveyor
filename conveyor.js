@@ -1,5 +1,5 @@
 /**
- * Conveyor v1.0.0
+ * Conveyor v1.0.1
  * Conveyor animates HTML anchor navigation without any library dependencies.
  *
  * @license Released under the MIT license.
@@ -18,7 +18,7 @@
    */
   function Conveyor(options) {
     // stop if browser doesn't meet necessary requirements
-    if ( !document.querySelectorAll ) {
+    if ( !document.querySelectorAll && !document.documentElement.classList ) {
       return;
     }
 
@@ -286,7 +286,8 @@
   Conveyor.prototype.moveConveyor = function() {
     var yPos;
 
-    // calculate interpolation factor by comparing the start time to the current time to see how far along the animation should be
+    // calculate interpolation factor by comparing the start time
+    // to the current time to see how far along the animation should be
     this.factor = ( Date.now() - this.startTime ) / this.duration;
 
     // stop animation & set factor to 1.0 if >= 1
