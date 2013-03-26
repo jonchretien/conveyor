@@ -34,6 +34,7 @@
     animationEasing: 'easeInOutCubic',
     duration: 1000,
     links: '[data-fx="conveyor"]',
+    offset: 0,
     milliseconds: 10
   };
 
@@ -179,7 +180,7 @@
    */
   Conveyor.prototype.init = function() {
     this.delta = null;
-    this.offset = null;
+    this.pgYOffset = null;
     this.startTime = null;
     this.timer = null;
     this.factor = 0;
@@ -187,6 +188,7 @@
     this.easing = Conveyor.animationOptions[this.options.animationEasing];
     this.milliseconds = this.options.milliseconds;
     this.navigationLinks = document.querySelectorAll(this.options.links);
+    this.offset = this.options.offset;
 
     this.bindEventHandlers();
   };
@@ -240,10 +242,10 @@
         elOffsetTop = document.getElementById(hash).offsetTop;
 
     // the number of pixels that the document has already been scrolled vertically
-    this.offset = window.pageYOffset;
+    this.pgYOffset = window.pageYOffset;
 
     // Y-offset difference
-    this.delta  = elOffsetTop - window.pageYOffset;
+    this.delta = elOffsetTop - ( window.pageYOffset + this.offset );
 
     // capture current time (in milliseconds)
     this.startTime = Date.now();
@@ -299,7 +301,7 @@
     }
 
     // run factor through easing equation before calculating yPos
-    yPos = this.easing(this.factor) * this.delta + this.offset;
+    yPos = this.easing(this.factor) * this.delta + this.pgYOffset;
     window.scrollBy(0, yPos - window.pageYOffset);
   };
 
