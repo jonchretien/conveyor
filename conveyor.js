@@ -176,25 +176,6 @@
 
 
   /**
-   * Sets up variables.
-   */
-  Conveyor.prototype.init = function() {
-    this.delta = null;
-    this.pgYOffset = null;
-    this.startTime = null;
-    this.timer = null;
-    this.factor = 0;
-    this.duration = this.options.duration;
-    this.easing = Conveyor.animationOptions[this.options.animationEasing];
-    this.milliseconds = this.options.milliseconds;
-    this.navigationLinks = document.querySelectorAll(this.options.links);
-    this.offset = this.options.offset;
-
-    this.bindEventHandlers();
-  };
-
-
-  /**
    * Merges optional config options with defaults.
    *
    * @param {Object} [options] - Optional options object passed in by constructor.
@@ -215,6 +196,25 @@
     }
 
     return this.options;
+  };
+
+
+  /**
+   * Sets up variables.
+   */
+  Conveyor.prototype.init = function() {
+    this.delta = null;
+    this.pgYOffset = null;
+    this.startTime = null;
+    this.timer = null;
+    this.factor = 0;
+    this.duration = this.options.duration;
+    this.easing = Conveyor.animationOptions[this.options.animationEasing];
+    this.milliseconds = this.options.milliseconds;
+    this.navigationLinks = document.querySelectorAll(this.options.links);
+    this.offset = this.options.offset;
+
+    this.bindEventHandlers();
   };
 
 
