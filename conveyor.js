@@ -209,8 +209,11 @@
     this.startTime = null;
     this.timer = null;
     this.factor = 0;
+
+    // set options
     this.duration = this.options.duration;
     this.easing = Conveyor.animationOptions[this.options.animationEasing];
+    this.highlightNav = this.options.highlightNav;
     this.milliseconds = this.options.milliseconds;
     this.navigationLinks = document.querySelectorAll(this.options.links);
     this.offset = this.options.offset;
