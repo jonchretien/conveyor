@@ -1,5 +1,5 @@
 /**
- * Conveyor v1.0.1
+ * Conveyor v1.1.0
  * Conveyor animates HTML anchor navigation without any library dependencies.
  *
  * @license Released under the MIT license.
@@ -33,6 +33,7 @@
   Conveyor.defaults = {
     animationEasing: 'easeInOutCubic',
     duration: 1000,
+    highlightNav: false,
     links: '[data-fx="conveyor"]',
     offset: 0,
     milliseconds: 10
@@ -255,8 +256,10 @@
       clearTimeout(this.timer);
     }
 
-    this.removeActiveClass();
-    this.addActiveClass(event.currentTarget);
+    if ( this.highlightNav ) {
+      this.removeActiveClass();
+      this.addActiveClass(event.currentTarget);
+    }
     this.moveConveyor();
   };
 

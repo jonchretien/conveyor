@@ -102,10 +102,12 @@
       <a href="https://github.com/jonchretien/conveyor/"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
     </div>
 
-    <script src="conveyor.js"></script>
+    <script src="conveyor.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        var conveyor = new Conveyor();
+        var conveyor = new Conveyor({
+          highlightNav: true
+        });
       }, false);
     </script>
 
