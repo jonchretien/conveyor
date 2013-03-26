@@ -1,5 +1,5 @@
 /**
- * Conveyor v1.0.1
+ * Conveyor v1.1.0
  * Conveyor animates HTML anchor navigation without any library dependencies.
  *
  * @license Released under the MIT license.
@@ -33,8 +33,10 @@
   Conveyor.defaults = {
     animationEasing: 'easeInOutCubic',
     duration: 1000,
+    highlightNav: false,
     links: '[data-fx="conveyor"]',
-    milliseconds: 10
+    milliseconds: 10,
+    offset: 0
   };
 
 
@@ -175,24 +177,6 @@
 
 
   /**
-   * Sets up variables.
-   */
-  Conveyor.prototype.init = function() {
-    this.delta = null;
-    this.offset = null;
-    this.startTime = null;
-    this.timer = null;
-    this.factor = 0;
-    this.duration = this.options.duration;
-    this.easing = Conveyor.animationOptions[this.options.animationEasing];
-    this.milliseconds = this.options.milliseconds;
-    this.navigationLinks = document.querySelectorAll(this.options.links);
-
-    this.bindEventHandlers();
-  };
-
-
-  /**
    * Merges optional config options with defaults.
    *
    * @param {Object} [options] - Optional options object passed in by constructor.
@@ -213,6 +197,28 @@
     }
 
     return this.options;
+  };
+
+
+  /**
+   * Sets up variables.
+   */
+  Conveyor.prototype.init = function() {
+    this.delta = null;
+    this.pgYOffset = null;
+    this.startTime = null;
+    this.timer = null;
+    this.factor = 0;
+
+    // set options
+    this.duration = this.options.duration;
+    this.easing = Conveyor.animationOptions[this.options.animationEasing];
+    this.highlightNav = this.options.highlightNav;
+    this.milliseconds = this.options.milliseconds;
+    this.navigationLinks = document.querySelectorAll(this.options.links);
+    this.offset = this.options.offset;
+
+    this.bindEventHandlers();
   };
 
 
@@ -240,10 +246,10 @@
         elOffsetTop = document.getElementById(hash).offsetTop;
 
     // the number of pixels that the document has already been scrolled vertically
-    this.offset = window.pageYOffset;
+    this.pgYOffset = window.pageYOffset;
 
     // Y-offset difference
-    this.delta  = elOffsetTop - window.pageYOffset;
+    this.delta = elOffsetTop - ( window.pageYOffset + this.offset );
 
     // capture current time (in milliseconds)
     this.startTime = Date.now();
@@ -253,8 +259,10 @@
       clearTimeout(this.timer);
     }
 
-    this.removeActiveClass();
-    this.addActiveClass(event.currentTarget);
+    if ( this.highlightNav ) {
+      this.removeActiveClass();
+      this.addActiveClass(event.currentTarget);
+    }
     this.moveConveyor();
   };
 
@@ -299,7 +307,7 @@
     }
 
     // run factor through easing equation before calculating yPos
-    yPos = this.easing(this.factor) * this.delta + this.offset;
+    yPos = this.easing(this.factor) * this.delta + this.pgYOffset;
     window.scrollBy(0, yPos - window.pageYOffset);
   };
 

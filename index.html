@@ -7,8 +7,8 @@
   </head>
   <body id="top">
 
-    <nav class="main-navigation">
-      <ul class="group">
+    <nav class="main-nav main-nav-vertical">
+      <ul>
         <li><a href="#top" data-fx="conveyor" class="nav-top">Top</a></li>
         <li><a href="#autos" data-fx="conveyor" class="nav-autos">Autos</a></li>
         <li><a href="#blogs" data-fx="conveyor" class="nav-blogs">Blogs</a></li>
@@ -105,7 +105,9 @@
     <script src="conveyor.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        var conveyor = new Conveyor();
+        var conveyor = new Conveyor({
+          highlightNav: true
+        });
       }, false);
     </script>
 

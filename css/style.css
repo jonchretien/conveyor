@@ -53,6 +53,7 @@ body {
   font: normal 62.5% "Helvetica Neue", helvetica, arial, verdana, sans-serif;
   line-height: 1;
   padding: 0 0 35px 0;
+  /* padding-top: 34px; TODO - use value for fixed nav demo */
 }
 
 p {
@@ -114,33 +115,50 @@ section {
 
 /* nav */
 
-.main-navigation {
+.main-nav {
   background: #ddd;
-  left: 20px;
   position: fixed;
   text-align: left;
-  top: 20px;
   z-index: 200;
 }
 
-.main-navigation > ul {
+.main-nav-vertical {
+  left: 20px;
+  top: 20px;
+}
+
+.main-nav-horizontal {
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.main-nav-vertical > ul {
   width: 15em;
 }
 
-.main-navigation li {
+.main-nav-horizontal > ul {
+  padding-left: 15px;
+}
+
+.main-nav li {
   border-bottom: 1px solid #eee;
   font-size: 1.1em; /* 11px */
 }
 
-.main-navigation a {
+.main-nav-horizontal li {
+  float: left;
+}
+
+.main-nav a {
   color: #888;
   display: block;
   font-size: 1.2em; /* 12px */
   padding: 10px 13px;
 }
 
-.main-navigation .active,
-.main-navigation a:hover {
+.main-nav .active,
+.main-nav a:hover {
   background: #555;
   color: #eee;
   text-decoration: none;
@@ -169,6 +187,7 @@ img,
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 500;
 }
 
 .group:after {
