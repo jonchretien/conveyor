@@ -49,6 +49,16 @@ duration: 1000
 
 The duration of the animation.
 
+### highlightNav
+
+**Type:** Boolean
+
+``` js
+highlightNav: false
+```
+
+When set to true the active link will be assigned an 'active' class and this class will be removed on all other links that are set in the _links_ option below.
+
 ### links
 
 **Type:** String
@@ -68,6 +78,24 @@ milliseconds: 10
 ```
 
 The number of milliseconds before the timer is repeated.
+
+
+
+### offset
+
+**Type:** Number
+
+``` js
+offset: 0
+```
+
+Usually the height of a fixed navigation element. You can pass in the offsetHeight of a DOM element like so:
+
+``` js
+var conveyor = new Conveyor({
+    offset: document.getElementById('fixedNav').offsetHeight
+});
+```
 
 ## Demo
 [http://jonchretien.github.com/conveyor/](http://jonchretien.github.com/conveyor/)

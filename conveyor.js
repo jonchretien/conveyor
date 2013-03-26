@@ -35,8 +35,8 @@
     duration: 1000,
     highlightNav: false,
     links: '[data-fx="conveyor"]',
-    offset: 0,
-    milliseconds: 10
+    milliseconds: 10,
+    offset: 0
   };
 
 
