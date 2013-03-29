@@ -30,7 +30,7 @@
   /**
    * Default configuration (can be overwritten by optional options object)
    */
-  Conveyor.defaults = {
+  Conveyor.prototype.defaults = {
     animationEasing: 'easeInOutCubic',
     duration: 1000,
     highlightNav: false,
@@ -184,9 +184,9 @@
   Conveyor.prototype.mergeConfigOptions = function(options) {
     this.options = {};
 
-    for ( var prop in Conveyor.defaults ) {
-      if ( Conveyor.defaults.hasOwnProperty(prop) ) {
-        this.options[ prop ] = Conveyor.defaults[ prop ];
+    for ( var prop in this.defaults ) {
+      if ( this.defaults.hasOwnProperty(prop) ) {
+        this.options[ prop ] = this.defaults[ prop ];
       }
     }
 
